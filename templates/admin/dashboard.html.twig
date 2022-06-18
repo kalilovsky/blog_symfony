@@ -5,7 +5,7 @@
 		<div class="dashboard active" id="dashboard">
 			<div class="cards">
 				<div class="resume">
-					<a href="index.php?controller=userscontroller&action=showEditUsersAdmin"></a>
+					<a href="{{ path('admin_users') }}"></a>
 					<div class="chiffre">
 						<div class="qt">{{users | length}}</div>
 						<div class="denom">Utilisateurs enregistrés</div>

@@ -28,4 +28,15 @@ class AdminController extends AbstractController
             'messages'=>$messages
         ]);
     }
+
+    /**
+     * @Route("admin/users", name="admin_users")
+     */
+    public function adminAllUsers(UsersRepository $usersRepo): Response
+    {
+        $users = $usersRepo->findAll();
+        return $this->render('admin/admin_users.html.twig', [
+            'users' => $users,
+        ]);
+    }
 }

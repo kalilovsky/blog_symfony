@@ -1,0 +1,131 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="dashboard active" id="dashboard">
+			<div class="cards edit">
+				<div class="resume">
+
+					<div class="chiffre">
+						<div class="qt" id="registredUser">{{users | length}}</div>
+						<div class="denom">Utilisateurs enregistrés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-users"></i>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="detail edit">
+				<div class="recentActivity">
+					<div class="textUp">
+						<div class="texte">
+							Commentaires en Attente
+						</div>
+
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>idUser</th>
+								<th>Photo</th>
+								<th>Pseudo</th>
+								<th>Firstname</th>
+								<th>Lastname</th>
+								<th>Type</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for user in users %}
+								<tr class="editContent" data-id="{{user.id}}" id="{{user.id}}">
+									<td>{{user.id}}</td>
+									<td>
+										<img id="photo{{user.id}}" src="{{ asset('./ressource/img/account/' ~ user.photouser) }}" data-src="{{user.photouser}}" alt="">
+									</td>
+									<td>{{user.pseudo}}</td>
+									<td>{{user.firstname}}</td>
+									<td>{{user.lastname}}</td>
+									<td>{{user.usertype}}</td>
+								</tr>
+							{% endfor %}
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="editPopup" id="editPopup">
+				<div class="thePopup" id="thePopup">
+					<div class="popUpCloseBtn" id="popUpCloseBtn">&times;</div>
+					<div class="title">
+						<h2>Détails du compte</h2>
+					</div>
+					<div class="body">
+						<form action="" id="editPopupForm">
+							<div class="head user">
+								<div class="leftEdit">
+									<div class="sender">
+										<label for="">Pseudo :</label>
+										<input id="pseudo" name="pseudo" type="text" value="test" required>
+										<input id="idUsers" type="hidden" name="idusers">
+									</div>
+									<div class="email">
+										<label for="">Email :</label>
+										<input id="email" name="email" type="email" value="test" required>
+									</div>
+									<div class="nom">
+										<label for="">Nom</label>
+										<input id="firstname" name="firstname" type="text" value="test" required>
+									</div>
+									<div class="prénom">
+										<label for="">Prénom</label>
+										<input id="lastname" name="lastname" type="text" value="test" required>
+									</div>
+									<div class="userType">
+										<label for="">Role</label>
+										<select id="userType" name="usertype" required>
+											<option value="admin">Admin</option>
+											<option value="author">Autheur</option>
+											<option value="normal">Normal</option>
+
+										</select>
+									</div>
+									<div class="pwd">
+										<label for="">Pwd :
+										</label>
+										<input id="pwd" name="pwd" type="password" value="">
+									</div>
+								</div>
+								<div class="rightEdit">
+									<div class="photo">
+										<img id="photo" src="ressource/img/account/account_default.png" alt="" srcset="" data-src="account_default.png">
+									</div>
+									<div class="fileUpload">
+										<input class="form-control" type="file" id="file" name="file">
+									</div>
+								</div>
+
+							</div>
+
+							<div class="editButton">
+								<button name="updateButton" id="updateButton">Update</button>
+
+								<button name="deleteButton" id="deleteButton">Supprimer</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+		<div class="dashboard active" id="dashboard">
+			<p>Vous n'êtes pas autoriser à voir cette page.</p>
+		</div>
+
+	{% endif %}
+
+{% endblock %}
+
