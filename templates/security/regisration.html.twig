@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<main>
+    {{form_start(form, {'attr':{'class':'formRegister'}})}}
+        <div id="titreAndError">
+            <h2>Inscription</h2>
+            <p id="errorMsg"></p>
+        </div>
+        
+        <div class="allInput">
+            <div class="row">
+                {{form_row(form.email, {'attr':{'placeholder':'Votre email...'}})}}
+                {{form_row(form.pwd, {'attr':{'placeholder':'Votre mot de passe...'}})}}
+                {{form_row(form.confirmPwd, {'attr':{'placeholder':'Répétez votre mot de passe...'}})}}
+            </div>
+            <div class="row">
+                {{form_row(form.lastname, {'attr':{'placeholder':'Votre nom...'}})}}
+                {{form_row(form.firstname, {'attr':{'placeholder':'Votre prénom...'}})}}
+                {{form_row(form.pseudo, {'attr':{'placeholder':'Votre pseudo...'}})}}
+            </div>
+        </div>
+        <div class="button">
+            <button type="submitAction" name="action" value="register" id="registerBtn">S'Inscrire</button>
+        </div>
+    {{form_end(form)}}
+</main>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<main>
+    <div class="homeUser">
+        <section class="firstPart">
+            <h1>Bienvenue sur Aventures Gustatives !</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Quidem iure voluptates eveniet praesentium optio adipisci
+                unde ipsam vitae porro? Non tempore, reprehenderit ex aut
+                iste eum fugiat quo, neque fuga quidem enim vero quaerat
+                vel, praesentium laboriosam! Iste sequi dolor distinctio,
+                suscipit quisquam consequuntur exercitationem et velit.
+                Perferendis, obcaecati. Repellat velit expedita omnis voluptate
+                error non ut voluptates explicabo inventore obcaecati corporis
+                quis aliquam laudantium fugiat sed animi minus exercitationem
+                fuga reiciendis suscipit, incidunt placeat nam delectus sequi.
+                Sit, ad?</p>
+        </section>
+        <section class="secondPart">
+            <div class="left">
+                <div class="firstText">
+                    <h3>Bonjour</h3>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        Omnis voluptas numquam natus totam soluta molestiae alias,
+                        voluptate quas dolorem incidunt repellendus officia?
+                    </p>
+                </div>
+                <div class="icons">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rating">
+                    <p id="star">&#9733;</p>
+                    <p id="text">
+                        Elu meilleur blog culinaire
+                    </p>
+                </div>
+                <div class="lastReceipt">
+                    <p>Ma dernière recette</p>
+                </div>
+                <div class="receiptLeft">
+                    <div class="image">
+                        <img src="./ressource/img/pasta.jpg" alt="" srcset="">
+                    </div>
+
+                    <div class="receipt">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing</p>
+                    </div>
+                    <form action="#" method="GET" class="formDetail">
+                        <button>Voir plus</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="right">
+                {% for article in articles %}
+                    <div class="completeReceipt">
+                        <div class="image">
+                            <img src="{{ './ressource/img/article/temp/' ~ article.photoarticle }}" alt="" srcset="">
+                        </div>
+                        <div class="details">
+                            <div class="accountImage">
+                                <img src="./ressource/img/account/{{article.user.photouser}}" alt="" srcset="">
+                            </div>
+                            <p>&#8226;</p>
+                            <p>{{article.user.firstname ~ ' ' ~ article.user.lastname}}</p>
+                            <p>&#8226;</p>
+                            <p>{{article.creationdate | date("Y/d/m H:i")}}</p>
+                            <p>&#8226;</p>
+                            <p>{{ article.category.catname }}</p>
+                        </div>
+                        <div class="receipt">
+                            <h2>{{ article.title }}</h2>
+                            <p>{{ article.smalldesc | slice(0,50)  ~ '...' }}</p>
+                        </div>
+                        <div class="formDetail">
+                            <button name="action" value="showArticle">
+                            <a href="{{path('article_page', {'id':article.id})}}">Voir Plus</a>
+                            </button>
+                        </div>
+                        <div class="comment">
+                            <i class="fas fa-comment-alt"></i>
+                            <p>{{article.countValidatedComments(article.comments)}} Commentaires</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</main>
+
+
+{% endblock %}

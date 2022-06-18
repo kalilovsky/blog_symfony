@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<main>
+		{% if not app.user %}
+			<form action="{{path('security_login')}}" method="POST" class="formRegister">
+				<div id="titreAndError">
+					<h2>Connexion</h2>
+					{% if error %}
+						<p id="errorMsg">{{error.messageKey}}</p>
+					{% endif %}
+				</div>
+				<div class="allInput">
+					<div class="row">
+						<div class="email">
+							<label for="email">Email</label>
+							<input type="email" id="username" name="_username" placeholder="Email" required>
+						</div>
+						<div class="pwd">
+							<label for="pwd">Mot de passe</label>
+							<input type="password" id="password" name="_password" placeholder="Mot de passe" required>
+						</div>
+						<div class="button">
+							<button type="submit">Login</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		{% else %}
+			<div class="formRegister">
+				<div id="titreAndError">
+					<h2>Voue êtes déja connecté !</h2>
+					<p>Changez de page pour découvrir notre Blog!!</p>
+				</div>
+			</div>
+		{% endif %}
+	</main>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<main>
+		{% if is_granted('ROLE_AUTHOR') or is_granted('ROLE_ADMIN') %}
+			
+			<div class="dashboard active">
+				<div class="editPopup visible zindex1" id="editPopup">
+					<div class="thePopup" id="thePopup">
+						<div class="title">
+							<h2>Détails de l'article</h2>
+							<p id="messageTxt" style="color:green"></p>
+						</div>
+						<div class="body">
+							{{form_start(form,{'action':path('add_article_function'),'attr':{'id':'editPopupForm'}})}}
+								<div class="head user">
+									<div class="leftEdit">
+										<div class="sender">
+											<label for="">Autheur :</label>
+											<label id="pseudo" for="">{{app.user.pseudo}}</label>
+										</div>
+										<div class="email">
+											<label for="">Email :</label>
+											<label id="email" for="">{{app.user.email}}</label>
+										</div>
+										<div class="category">
+											{{form_row(form.category,{'attr':{'class':'idCategory'}})}}
+										</div>
+										<div class="articleTitle">
+											{{form_row(form.title,{'label':'Titre :'})}}
+										</div>
+										<div class="smallDesc">
+											{{form_row(form.smalldesc,{'label':'Petite Desc :'})}}
+										</div>
+									</div>
+									<div class="rightEdit">
+										<div class="photo">
+											<img id="photo" src="{{ asset('./ressource/img/article/temp/brochettes.jpg') }}" alt="" srcset="" data-src="brochettes.jpg">
+										</div>
+										<div class="fileUpload">
+											{# <input class="form-control" type="file" id="formFile" name="file" required> #}
+											{{form_row(form.photoarticle,{'label':false})}}
+										</div>
+									</div>
+								</div>
+								<div class="messageContent">
+									{{form_row(form.content,{'label':false, 'attr':{'cols':'30','rows':'7'}})}}
+								</div>
+								<div class="editButton">
+									<button name="updateButton" id="updateButton">Ajouter l'article</button>
+								</div>
+							{{form_end(form)}}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<div class="dashboard active" id="dashboard">
+				<p>Vous n'êtes pas autoriser à voir cette page.</p>
+			</div>
+		{% endif %}
+	</main>
+{% endblock %}

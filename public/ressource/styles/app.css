@@ -1,0 +1,1549 @@
+:root {
+  --blue: rgb(75, 74, 74);
+  --white: #fff;
+  --grey: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url("../font/Metropolis-Light.otf") format("openType");
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url("../font/Futura-Light.otf") format("openType");
+}
+
+@font-face {
+  font-family: 'Dido';
+  src: url("../font/DidotHTFL06LightItal.ttf") format("truetype");
+}
+
+.zindex1 {
+  z-index: 1 !important;
+}
+
+* {
+  font-family: "Futura";
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+p {
+  font-family: "Futura";
+}
+
+h3,
+h2 {
+  font-family: "Dido";
+}
+
+.completeReceipt {
+  position: relative;
+  border: 1px solid #aeb8ae;
+  margin: 20px 0;
+}
+
+.completeReceipt .image {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  height: 350px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.completeReceipt .image img {
+  position: absolute;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.completeReceipt .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 5px;
+  padding: 20px 3px;
+}
+
+.completeReceipt .details .accountImage {
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+}
+
+.completeReceipt .details .accountImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.completeReceipt .details p {
+  font-size: 0.7em;
+  color: #84947B;
+  font-family: "Metropolis";
+}
+
+.completeReceipt .receipt h2 {
+  padding: 5px;
+  font-family: "Metropolis";
+}
+
+.completeReceipt .receipt p {
+  padding: 5px;
+}
+
+.completeReceipt .formDetail {
+  padding: 20px 5px;
+  border-bottom: 1px solid #aeb8ae;
+}
+
+.completeReceipt .formDetail button {
+  padding: 10px 5px;
+  position: relative;
+  width: 100%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.completeReceipt .formDetail button:hover {
+  background: #8b8585;
+}
+
+.completeReceipt .formDetail button a {
+  width: 100%;
+  text-decoration: none;
+  color: #F8F9F7;
+}
+
+.completeReceipt .comment {
+  padding: 30px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.completeReceipt .comment p {
+  padding: 0 10px;
+}
+
+.receiptLeft {
+  padding: 10px 0;
+}
+
+.receiptLeft .image {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.receiptLeft .image img {
+  position: absolute;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.receiptLeft .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 5px;
+  padding: 20px 3px;
+}
+
+.receiptLeft .details .accountImage {
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+}
+
+.receiptLeft .details .accountImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.receiptLeft .details p {
+  font-size: 0.7em;
+  color: #84947B;
+  font-family: "Metropolis";
+}
+
+.receiptLeft .receipt {
+  padding: 5px 0;
+}
+
+.receiptLeft .receipt h2 {
+  padding: 5px;
+  font-family: "Metropolis";
+}
+
+.receiptLeft .receipt p {
+  padding: 5px;
+}
+
+.receiptLeft .formDetail {
+  padding: 20px 5px;
+  border-bottom: 1px solid #aeb8ae;
+}
+
+.receiptLeft .formDetail button {
+  padding: 10px 5px;
+  width: 100%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.receiptLeft .formDetail button:hover {
+  background: #8b8585;
+}
+
+.receiptLeft .comment {
+  padding: 30px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+#pageReceipt {
+  padding: 20px 40px;
+}
+
+.theReceipt {
+  padding: 0 40px;
+  position: relative;
+  border: 1px solid #aeb8ae;
+}
+
+.theReceipt .image {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  height: 350px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.theReceipt .image img {
+  position: absolute;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.theReceipt .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 5px;
+  padding: 20px 3px;
+}
+
+.theReceipt .details .accountImage {
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+}
+
+.theReceipt .details .accountImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.theReceipt .details p {
+  font-size: 0.7em;
+  color: #84947B;
+  font-family: "Metropolis";
+}
+
+.theReceipt .receipt h2 {
+  padding: 5px;
+  font-family: "Metropolis";
+}
+
+.theReceipt .receipt p {
+  padding: 5px;
+}
+
+.theReceipt .receiptInstructions {
+  padding: 30px 0;
+  border-bottom: 1px solid #8b8585;
+}
+
+.theReceipt .comment {
+  padding: 30px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.theReceipt .comment p {
+  padding: 0 10px;
+}
+
+.theReceipt .commentContent {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.theReceipt .commentContent p {
+  padding: 5px 0;
+}
+
+.theReceipt .commentContent .author {
+  color: #8b8585;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #8b8585;
+}
+
+header nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  background-color: #F8F9F7;
+  z-index: 1000;
+}
+
+header nav ul {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+header nav ul li {
+  padding: 10px 0;
+  list-style: none;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #2F2E2E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+header nav ul li a .icon {
+  margin-right: 5px;
+}
+
+header nav ul li a .icon img {
+  max-width: 30px;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+header .menuDeroulant {
+  position: fixed;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  right: 0;
+  top: -300px;
+  width: 25%;
+  background: #F8F9F7;
+  /* height: 160px; */
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: auto;
+  z-index: 500;
+  padding: 20px 20px;
+}
+
+header .menuDeroulant.active {
+  top: 50px;
+}
+
+header .menuDeroulant form div {
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+header .menuDeroulant form div input {
+  height: 40px;
+  font-size: 1em;
+  padding: 10px 0;
+}
+
+header .menuDeroulant form div label {
+  width: 40%;
+}
+
+header .menuDeroulant form .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+header .menuDeroulant form .button button {
+  border-radius: 5px;
+  width: 50%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 1.1em;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+header .menuDeroulant form .button button:hover {
+  background: #8b8585;
+}
+
+header .menuDeroulant div p {
+  padding: 10px 0;
+}
+
+header .menuDeroulant div p a {
+  text-decoration: none;
+  color: #2F2E2E;
+  position: relative;
+}
+
+header .menuDeroulant div p a:hover {
+  color: #84947B;
+}
+
+header .logo {
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 30px 0;
+  top: 50px;
+}
+
+header .logo.hidden {
+  display: none;
+}
+
+header .logo .image {
+  height: 150px;
+  overflow: hidden;
+}
+
+header .logo .image img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100%;
+}
+
+header .logo .texte {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+header .logo .texte h1 {
+  text-transform: uppercase;
+  font-family: "Metropolis";
+  letter-spacing: 4px;
+  color: #84947B;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #F8F9F7;
+  color: #2F2E2E;
+}
+
+footer .icons ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+
+footer .icons ul li {
+  cursor: pointer;
+  padding: 5px;
+  list-style: none;
+}
+
+footer .icons ul li:hover {
+  border-radius: 5px;
+  background: #2F2E2E;
+}
+
+footer .icons ul li:hover a {
+  color: #F8F9F7;
+}
+
+footer .icons ul li a {
+  text-decoration: none;
+  color: #2F2E2E;
+}
+
+main {
+  padding: 30px 25%;
+}
+
+main .about {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+main .about .image {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+main .about .image img {
+  position: relative;
+  top: -80px;
+  width: 90%;
+}
+
+main .about .text {
+  color: #2F2E2E;
+  width: 49%;
+  min-width: 49%;
+}
+
+main .about .text h2 {
+  position: relative;
+}
+
+main .about .text h2::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 30px;
+  background: #2F2E2E;
+  bottom: -20px;
+}
+
+main .about .text p {
+  padding-top: 40px;
+}
+
+main .homeUser .firstPart {
+  width: 100%;
+}
+
+main .homeUser .firstPart h1 {
+  text-align: center;
+  color: #84947B;
+}
+
+main .homeUser .firstPart p {
+  padding: 20px 0;
+}
+
+main .homeUser .secondPart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+main .homeUser .secondPart .left {
+  width: 25%;
+  height: 100%;
+}
+
+main .homeUser .secondPart .left .firstText h3 {
+  position: relative;
+  padding: 20px 0;
+}
+
+main .homeUser .secondPart .left .firstText h3::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 30px;
+  background: #2F2E2E;
+  bottom: 0px;
+}
+
+main .homeUser .secondPart .left .firstText p {
+  position: relative;
+  padding: 20px 0;
+}
+
+main .homeUser .secondPart .left .firstText p::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: #2F2E2E;
+  bottom: -20px;
+}
+
+main .homeUser .secondPart .left .icons {
+  position: relative;
+  padding: 20px 0;
+  width: 100%;
+}
+
+main .homeUser .secondPart .left .icons ul {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+main .homeUser .secondPart .left .icons ul li {
+  padding: 5px;
+  cursor: pointer;
+  list-style: none;
+}
+
+main .homeUser .secondPart .left .icons ul li:hover {
+  border-radius: 5px;
+  background: #2F2E2E;
+}
+
+main .homeUser .secondPart .left .icons ul li:hover a {
+  color: #F8F9F7;
+}
+
+main .homeUser .secondPart .left .icons ul li a {
+  text-decoration: none;
+  color: #2F2E2E;
+}
+
+main .homeUser .secondPart .left .rating {
+  position: relative;
+}
+
+main .homeUser .secondPart .left .rating #star {
+  padding: 20px 0;
+  text-align: center;
+  color: #b2996b;
+}
+
+main .homeUser .secondPart .left .rating #star::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 42%;
+  background: #b2996b;
+  left: 0px;
+  top: 30px;
+}
+
+main .homeUser .secondPart .left .rating #star::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 42%;
+  background: #b2996b;
+  right: 0px;
+  top: 30px;
+}
+
+main .homeUser .secondPart .left .rating #text {
+  position: relative;
+  margin-top: -10px;
+  padding-bottom: 20px;
+  font-size: 1.6em;
+  font-family: "Dido";
+  border-bottom: #b2996b 1px solid;
+}
+
+main .homeUser .secondPart .left .lastReceipt {
+  padding: 10px 0;
+}
+
+main .homeUser .secondPart .left .lastReceipt p {
+  position: relative;
+  padding: 10px 0;
+  font-family: "Dido";
+}
+
+main .homeUser .secondPart .left .lastReceipt p::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 15%;
+  background: #b2996b;
+  bottom: -10px;
+  left: 0px;
+}
+
+main .homeUser .secondPart .right {
+  width: 75%;
+  position: relative;
+}
+
+main .formComment {
+  margin: 10px 0;
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid #8b8585;
+  border-radius: 5px;
+}
+
+main .formComment div {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+main .formComment div input {
+  position: relative;
+  width: 100%;
+  padding: 5px 0;
+  outline: none;
+}
+
+main .formComment div textarea {
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+}
+
+main .formComment div button {
+  border-radius: 5px;
+  width: 50%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 1.1em;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+main .formComment div button:hover {
+  background: #8b8585;
+}
+
+main .recentReceipts {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 100%;
+  position: relative;
+}
+
+main .recentReceipts .completeReceipt {
+  position: relative;
+  border: 1px solid #aeb8ae;
+}
+
+main .recentReceipts .completeReceipt .image {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  height: 350px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+main .recentReceipts .completeReceipt .image img {
+  position: absolute;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+main .recentReceipts .completeReceipt .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+main .recentReceipts .completeReceipt .details .accountImage {
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+}
+
+main .recentReceipts .completeReceipt .details .accountImage img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+main .recentReceipts .completeReceipt .details p {
+  font-size: 0.5em;
+  color: #84947B;
+  font-family: "Metropolis";
+  vertical-align: middle;
+  text-align: center;
+}
+
+main .recentReceipts .completeReceipt .receipt h2 {
+  padding: 5px;
+  font-family: "Metropolis";
+  font-size: 1.2em;
+}
+
+main .recentReceipts .completeReceipt .receipt p {
+  font-size: 0.9em;
+  padding: 5px;
+}
+
+main .recentReceipts .completeReceipt .formDetail {
+  padding: 20px 5px;
+  border-bottom: 1px solid #aeb8ae;
+}
+
+main .recentReceipts .completeReceipt .formDetail button {
+  padding: 10px 5px;
+  width: 100%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+main .recentReceipts .completeReceipt .formDetail button:hover {
+  background: #8b8585;
+}
+
+main .recentReceipts .completeReceipt .comment {
+  padding: 30px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+main .formContact {
+  margin: 10px 0;
+  padding: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid #8b8585;
+  border-radius: 5px;
+}
+
+main .formContact div {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+main .formContact div input {
+  position: relative;
+  width: 100%;
+  padding: 5px 0;
+  outline: none;
+}
+
+main .formContact div textarea {
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+}
+
+main .formContact div button {
+  border-radius: 5px;
+  width: 50%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 1.1em;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+main .formContact div button:hover {
+  background: #8b8585;
+}
+
+main .formRegister {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px 0;
+  border: 1px solid #8b8585;
+  border-radius: 5px;
+}
+
+main .formRegister #titreAndError {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+main .formRegister #titreAndError h2 {
+  color: #84947B;
+  padding: 10px 0;
+}
+
+main .formRegister #titreAndError #errorMsg {
+  color: red;
+  padding: 10px 0;
+}
+
+main .formRegister .allInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+main .formRegister .allInput .row div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+main .formRegister .allInput .row div input {
+  position: relative;
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+}
+
+main .formRegister button {
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  background: #84947B;
+  color: #F8F9F7;
+  font-size: 1.1em;
+  padding: 5px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+main .formRegister button:hover {
+  background: #8b8585;
+}
+
+.dashboard.active {
+  width: calc(100%);
+  padding: 80px 0;
+}
+
+.dashboard.active .cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+  grid-template-columns: repeat(5, 1fr);
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  gap: 30px;
+}
+
+.dashboard.active .cards.edit .resume {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+}
+
+.dashboard.active .cards.editcom .resume:first-child {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.dashboard.active .cards.editcom .resume:last-child {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
+}
+
+.dashboard.active .cards .resume {
+  position: relative;
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+}
+
+.dashboard.active .cards .resume:hover {
+  background: var(--blue);
+}
+
+.dashboard.active .cards .resume:hover .denom,
+.dashboard.active .cards .resume:hover .icon,
+.dashboard.active .cards .resume:hover .qt {
+  color: var(--white);
+}
+
+.dashboard.active .cards .resume a {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.dashboard.active .cards .resume .qt {
+  font-weight: 500;
+  color: var(--blue);
+  font-size: 2.5em;
+}
+
+.dashboard.active .cards .resume .denom {
+  font-size: 1.2em;
+  color: var(--black2);
+  margin-top: 5px;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.dashboard.active .cards .resume .icon {
+  font-size: 3em;
+  color: var(--black2);
+}
+
+.dashboard.active .editPopup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, -webkit-transform 1s;
+  transition: opacity 0.5s, -webkit-transform 1s;
+  transition: transform 1s, opacity 0.5s;
+  transition: transform 1s, opacity 0.5s, -webkit-transform 1s;
+  background: rgba(0, 0, 0, 0.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+.dashboard.active .editPopup.visible {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.2s;
+  transition: opacity 0.5s, -webkit-transform 0.2s;
+  transition: transform 0.2s, opacity 0.5s;
+  transition: transform 0.2s, opacity 0.5s, -webkit-transform 0.2s;
+  opacity: 1;
+}
+
+.dashboard.active .editPopup.visible .thePopup {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.dashboard.active .editPopup .thePopup {
+  position: relative;
+  width: 70%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: #F8F9F7;
+}
+
+.dashboard.active .editPopup .thePopup .popUpCloseBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 25px;
+  color: #fdfdfd;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dashboard.active .editPopup .thePopup .title {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.dashboard.active .editPopup .thePopup .body .head.user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.dashboard.active .editPopup .thePopup .body div {
+  padding: 5px 10px;
+}
+
+.dashboard.active .editPopup .thePopup .body div label {
+  padding: 0px 5px;
+}
+
+.dashboard.active .editPopup .thePopup .body .rightEdit .photo img {
+  height: 200px;
+}
+
+.dashboard.active .editPopup .thePopup .body .messageContent {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.dashboard.active .editPopup .thePopup .body .messageContent textarea {
+  position: relative;
+  margin: 0 30px;
+  width: 80%;
+  outline: none;
+}
+
+.dashboard.active .editPopup .thePopup .editButton {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard.active .editPopup .thePopup .editButton button {
+  padding: 5px 10px;
+  font-size: medium;
+}
+
+.dashboard .detail {
+  position: relative;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.dashboard .detail.edit {
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  padding: 0 30px;
+}
+
+.dashboard .detail.user {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.dashboard .detail.user .recentActivity {
+  position: relative;
+  width: 70%;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+  padding: 20px;
+}
+
+.dashboard .detail .recentActivity {
+  position: relative;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+  padding: 20px;
+}
+
+.dashboard .detail .recentActivity .textUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.dashboard .detail .recentActivity .textUp .texte {
+  position: relative;
+  color: var(--blue);
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+.dashboard .detail .recentActivity .textUp button {
+  font-size: medium;
+  padding: 5px 10px;
+  color: var(--white);
+  background: var(--blue);
+  border-radius: 6px;
+}
+
+.dashboard .detail .recentActivity .textUp button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.dashboard .detail .recentActivity table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.dashboard .detail .recentActivity table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.unread {
+  font-style: italic;
+  font-weight: bold;
+  background-color: #f5f5f5;
+}
+
+.dashboard .detail .recentActivity table tbody tr:hover {
+  color: var(--white);
+  background: var(--blue);
+}
+
+.dashboard .detail .recentActivity table tbody tr:hover td img {
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
+
+.dashboard .detail .recentActivity table tbody tr td {
+  padding: 5px 0;
+  text-align: center;
+}
+
+.dashboard .detail .recentActivity table tbody tr td img {
+  position: relative;
+  height: 30px;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.dashboard .detail .recentActivity table th {
+  text-align: center;
+}
+
+.dashboard .detail .recentActivity table tbody tr td:last-child,
+.dashboard .detail .recentActivity table th:last-child {
+  text-align: end;
+}
+
+.dashboard .detail .recentUser {
+  position: relative;
+  padding: 30px 20px;
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+  background: var(--white);
+  margin: 0 20px;
+}
+
+.dashboard .detail .recentUser .resume .qt {
+  font-weight: 500;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.dashboard .detail .recentUser .resume .denom {
+  font-size: 0.8em;
+  color: var(--black2);
+  margin-top: 5px;
+  margin-left: 8px;
+}
+
+.dashboard .detail .recentUser .user {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.dashboard .detail .recentUser .user:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 10px;
+}
+
+.dashboard .detail .recentUser .user:hover .userInfo .mail {
+  color: var(--white);
+}
+
+.dashboard .detail .recentUser .user .photo {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.dashboard .detail .recentUser .user .photo img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+}
+
+.dashboard .detail .recentUser .user .userInfo {
+  padding: 0 10px;
+}
+
+.dashboard .detail .recentUser .user .userInfo .pseudo {
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.dashboard .detail .recentUser .user .userInfo .mail {
+  font-weight: 200;
+  font-size: 0.7em;
+  padding-top: 5px;
+  color: var(--black2);
+}
+
+/*# sourceMappingURL=style.css.map */

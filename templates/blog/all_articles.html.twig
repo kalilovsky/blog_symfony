@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<main>
+    {% for article in articles %}
+        <div class="completeReceipt" id="pageReceipt">
+            <div class="image">
+                <img src="{{ asset('./ressource/img/article/temp/') ~ article.photoarticle }}" alt="" srcset="">
+            </div>
+            <div class="details">
+                <div class="accountImage">
+                    <img src="{{asset('./ressource/img/account/' ~ article.user.photouser)}}" alt="" srcset="">
+                </div>
+                <p>&#8226;</p>
+                <p>{{article.user.firstname ~ ' ' ~ article.user.lastname}}</p>
+                <p>&#8226;</p>
+                <p>{{article.creationdate | date("Y/d/m H:i")}}</p>
+                <p>&#8226;</p>
+                <p>{{ article.category.catname }}</p>
+            </div>
+            <div class="receipt">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.smalldesc | slice(0,50) ~ '...' }}</p>
+            </div>
+            <div class="formDetail">
+                <button name="action" value="showArticle">
+                <a href="{{path('article_page', {'id':article.id})}}">Voir Plus</a>
+                </button>
+            </div>
+            <div class="comment">
+                <i class="fas fa-comment-alt"></i>
+                <p>{{article.countValidatedComments(article.comments)}} Commentaires</p>
+            </div>
+        </div>
+    {% endfor %}
+</main>
+{% endblock %}
