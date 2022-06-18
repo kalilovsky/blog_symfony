@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -25,11 +26,13 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", name = "idusers")
+     * @Groups("comment")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $email;
 
@@ -40,26 +43,31 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $usertype;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $photouser;
 

@@ -1,0 +1,96 @@
+{% extends "base.html.twig" %}
+{% set readMessagesCount = messages|reduce((c,v)=>c+v.status) %}
+{% set allMessagesCount = messages|length %}
+
+{% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="dashboard active" id="dashboard">
+			<div class="cards editcom">
+				<div class="resume">
+					<div class="chiffre">
+						<div id="unreadMsg" class="qt">{{allMessagesCount-readMessagesCount}}</div>
+						<div class="denom">Messages non lus</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-comments"></i>
+					</div>
+				</div>
+				<div class="resume">
+					<div class="chiffre">
+						<div id="readMsg" class="qt">{{readMessagesCount}}</div>
+						<div class="denom">Message lus</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-comments"></i>
+					</div>
+				</div>
+			</div>
+			<div class="detail edit">
+				<div class="recentActivity">
+					<div class="textUp">
+						<div class="texte">
+							Liste des message
+						</div>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>idMessage</th>
+								<th>Sender</th>
+								<th>Content</th>
+								<th>Date</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for message in messages %}
+								<tr class="editContent {{message.status == 0 ? 'unread'}}" data-id= data-status= ="{{message.id}}" ="{{message.status}}">
+									<td>{{message.id}}</td>
+									<td>{{message.senderemail}}</td>
+									<td>{{message.content}}</td>
+									<td>{{message.date | date('d/m/Y H:i')}}</td>
+									<td id="{{message.id}}">{{message.status > 0 ? 'Lu' : 'Non lu'}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="editPopup" id="editPopup">
+				<div class="thePopup" id="thePopup">
+					<div class="popUpCloseBtn" id="popUpCloseBtn">&times;</div>
+					<div class="title">
+						<h2>Détails du message</h2>
+					</div>
+					<div class="body">
+						<form action="" id="editPopupForm">
+							<div class="head">
+								<div class="sender">
+									<label for="">Expéditeur</label>
+									<label id="email" for="">khalil</label>
+								</div>
+								<div class="date">
+									<label for="">Date le</label>
+									<label id="date" for="">04/04/2022</label>
+								</div>
+							</div>
+							<div class="messageContent">
+								<textarea name="content" id="content" cols="30" rows="10" readonly></textarea>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div class="dashboard active" id="dashboard">
+			<p>Vous n'êtes pas autoriser à voir cette page.</p>
+		</div>
+	{% endif %}
+	<script>
+		document.getElementById("logo").classList.add("hidden");
+	</script>
+
+{% endblock %}
+

@@ -15,7 +15,7 @@
 					</div>
 				</div>
 				<div class="resume">
-					<a href="index.php?controller=commentcontroller&action=showeditCommentsAdmin"></a>
+					<a href="{{ path('admin_comments') }}"></a>
 					<div class="chiffre">
 						<div class="qt">{{comments | length}}</div>
 						<div class="denom">Commentaires non approuvés</div>
@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<div class="resume">
-					<a href="index.php?controller=articlecontroller&action=showEditArticlesAdmin"></a>
+					<a href="{{ path('admin_articles') }}"></a>
 					<div class="chiffre">
 						<div class="qt">{{articles | length}}</div>
 						<div class="denom">Articles postés</div>
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<div class="resume">
-					<a href="index.php?controller=messagecontroller&action=showEditMessagesAdmin"></a>
+					<a href="{{ path('admin_messages') }}"></a>
 					<div class="chiffre">
 						<div class="qt">{{messages | length}}</div>
 						<div class="denom">Messages non lus</div>
@@ -68,7 +68,7 @@
 							<tr>
 								<td>{{comment.user.pseudo}}</td>
 								<td>{{comment.article.title}}</td>
-								<td>{{comment.datecreated | date('Y/m/d H:i')}}</td>
+								<td>{{comment.datecreated | date('d/m/Y H:i')}}</td>
 								<td>{{comment.status}}</td>
 								<td></td>
 							</tr>
@@ -105,5 +105,9 @@
 			<p>Vous n'êtes pas autoriser à voir cette page.</p>
 		</div>
 	{% endif %}
+    <script>
+        document.getElementById("logo").classList.add("hidden");
+    </script>
+
 {% endblock %}
 

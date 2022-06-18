@@ -1,0 +1,120 @@
+{% extends "base.html.twig" %}
+{% set approuvedCommentsCount = comments|reduce((c,v)=>c+v.status) %}
+{% set allCommentsCount = comments|length %}
+
+{% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="dashboard active" id="dashboard">
+			<div class="cards editcom">
+				<div class="resume">
+					<div class="chiffre">
+						<div id="waitingComments" class="qt">{{allCommentsCount - approuvedCommentsCount}}</div>
+						<div class="denom">Commentaires non approuvés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-comments"></i>
+					</div>
+				</div>
+				<div class="resume">
+					<div class="chiffre">
+						<div id="aprovedComments" class="qt">{{approuvedCommentsCount}}</div>
+						<div class="denom">Commentaires approuvés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-comments"></i>
+					</div>
+				</div>
+			</div>
+			<div class="detail edit">
+				<div class="recentActivity">
+					<div class="textUp">
+						<div class="texte">
+							Commentaires en Attente
+						</div>
+
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>idComment</th>
+								<th>User</th>
+								<th>Article</th>
+								<th>Date</th>
+								<th>Status</th>
+
+							</tr>
+						</thead>
+						<tbody>
+                            {% for comment in comments %}
+                                <tr class="editContent {{comment.status==0?'unread'}}" data-id="{{comment.id}}" data-url={{ path('admin_get_comment',{'id':comment.id}) }}>
+                                    <td>{{comment.id}}</td>
+                                    <td>{{comment.user.pseudo}}</td>
+                                    <td>{{comment.article.title}}</td>
+                                    <td>{{comment.datecreated | date('d/m/Y H:i')}}</td>
+                                    <td id="{{comment.id}}">{{comment.status>0?"Publié":"En attente"}}</td>
+                                </tr>
+                            {% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="editPopup" id="editPopup">
+				<div class="thePopup" id="thePopup">
+					<div class="popUpCloseBtn" id="popUpCloseBtn">&times;</div>
+					<div class="title">
+						<h2>Détails du commentaire</h2>
+					</div>
+					<div class="body">
+						<form action="" id="editPopupForm">
+
+							<div class="head">
+								<div class="sender">
+									<label for="">Pseudo :</label>
+									<input type="hidden" id="idComment" name="id">
+									<label id="pseudo" for="">khalil</label>
+								</div>
+								<div class="date">
+									<label for="">Email :</label>
+									<label id="email" for="">kalilov@hotmail.com</label>
+								</div>
+								<div class="article">
+									<label for="">Titre :</label>
+									<label id="title" for="">Je m'en fous du titre</label>
+								</div>
+								<div class="article">
+									<label for="">Status :</label>
+									<select name="status" id="status" data-status="">
+										<option value="0">En Attente</option>
+										<option value="1">Approuvé</option>
+									</select>
+								</div>
+							</div>
+							<div class="messageContent">
+								<textarea name="contentcomment" id="messageContent" cols="30" rows="10" readonly></textarea>
+							</div>
+							<div class="editButton">
+								<button class="editButtonCls" data-url="/admin/setComment/" name="updateButton" id="updateButton">Update</button>
+
+								<button class="editButtonCls" data-url="/admin/deleteComment/" name="deleteButton" id="deleteButton">Supprimer</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+		<div class="dashboard active" id="dashboard">
+			<p>Vous n'êtes pas autoriser à voir cette page.</p>
+		</div>
+
+	{% endif %}
+<script>
+	document.getElementById("logo").classList.add("hidden");
+</script>
+{% if is_granted('ROLE_ADMIN') %}
+	<script src="{{asset('./ressource/js/admin-comments.js')}}"></script>
+{% endif %}
+{% endblock %}
+

@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -16,42 +17,50 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", name="idarticle")
+     * @Groups("comment")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("comment")
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("comment")
      */
     private $creationdate;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("comment")
      */
     private $updatedate;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("comment")
      */
     private $smalldesc;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("comment")
      */
     private $photoarticle;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      * @ORM\JoinColumn(name="idcategory",referencedColumnName="idcategory", nullable=false)
+     * @Groups("comment")
      */
     private $category;
 

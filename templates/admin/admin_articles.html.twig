@@ -1,0 +1,137 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="dashboard active" id="dashboard">
+			<div class="cards edit">
+				<div class="resume">
+
+					<div class="chiffre">
+						<div class="qt">{{articles|length}}</div>
+						<div class="denom">Articles postés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-users"></i>
+					</div>
+				</div>
+			</div>
+			<div class="detail edit">
+				<div class="recentActivity">
+					<div class="textUp">
+						<div class="texte">
+							Liste des Articles
+						</div>
+						<button>
+							<a href="{{ path('add_article') }}">New Article</a>
+						</button>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>idarticle</th>
+								<th>Titre</th>
+								<th>Catègorie</th>
+								<th>Auteur</th>
+								<th>Creation Date</th>
+								<th>Update Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for article in articles %}
+								<tr class="editContent" data-id="{{article.id}}" id="{{article.id}}"></tr>
+								<td>{{article.id}}</td>
+								<td>{{article.title}}</td>
+								<td>{{article.category.catname}}</td>
+								<td>{{article.user.pseudo}}</td>
+								<td>{{article.creationdate | date('d/m/Y H:i')}}</td>
+								<td>{{article.updatedate | date('d/m/Y H:i')}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<div class="editPopup" id="editPopup">
+			<div class="thePopup" id="thePopup">
+				<div class="popUpCloseBtn" id="popUpCloseBtn">&times;</div>
+				<div class="title">
+					<h2>Détails de l'article</h2>
+				</div>
+				<div class="body">
+					<form action="" id="editPopupForm">
+						<div class="head user">
+							<div class="leftEdit">
+								<div class="sender">
+									<label for="">Autheur :</label>
+									<label id="pseudo" for=""></label>
+									<input id="idArticle" type="hidden" name="idArticle">
+								</div>
+								<div class="email">
+									<label for="">Email :</label>
+									<label id="email" for="">kalilov@hotmail.com</label>
+								</div>
+								<div class="date">
+									<label for="">Date le :</label>
+									<label id="creationDate" for="">12/12/2022</label>
+								</div>
+								<div class="category">
+									<label for="">Categorie</label>
+
+									<select name="idCategory" id="idCategory">
+										<option value="1">Plat</option>
+										<option value="2">Pâtisserie</option>
+										<option value="3">Apéritif</option>
+										<option value="6">Entrée</option>
+										<option value="7">Dessert</option>
+										<option value="8">Petit déjeuner</option>
+
+									</select>
+								</div>
+								<div class="articleTitle">
+									<label for="">Titre :
+									</label>
+									<input id="title" name="title" type="text" value="test">
+								</div>
+								<div class="smallDesc">
+									<label for="">Petite Desc :
+									</label>
+									<input id="smallDesc" name="smallDesc" type="text" value="test1234">
+								</div>
+							</div>
+							<div class="rightEdit">
+								<div class="photo">
+									<img id="photo" src="./ressource/img/article/temp/brochettes.jpg" alt="" srcset="" data-src="brochettes.jpg">
+								</div>
+								<div class="fileUpload">
+									<input class="form-control" type="file" id="formFile" name="file">
+								</div>
+							</div>
+
+						</div>
+						<div class="messageContent">
+							<textarea name="content" id="content" cols="30" rows="7"></textarea>
+						</div>
+						<div class="editButton">
+							<button name="updateButton" id="updateButton">Update</button>
+
+							<button name="deleteButton" id="deleteButton">Supprimer</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% else %}
+	<div class="dashboard active" id="dashboard">
+		<p>Vous n'êtes pas autoriser à voir cette page.</p>
+	</div>
+
+{% endif %}
+<script>
+	document.getElementById("logo").classList.add("hidden");
+</script>
+
+{% endblock %}
+

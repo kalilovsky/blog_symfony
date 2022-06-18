@@ -103,16 +103,16 @@
 								<a href="{{ path('admin_users') }}">Users</a>
 							</p>
 							<p>
-								<a href="index.php?controller=commentcontroller&action=showeditCommentsAdmin">Comments</a>
+								<a href="{{ path('admin_comments') }}">Comments</a>
 							</p>
 							<p>
-								<a href="index.php?controller=articlecontroller&action=showEditArticlesAdmin">Articles</a>
+								<a href="{{ path('admin_articles') }}">Articles</a>
 							</p>
 							<p>
 								<a href="{{ path('add_article') }}">Ajout Article</a>
 							</p>
 							<p>
-								<a href="index.php?controller=messagecontroller&action=showEditMessagesAdmin">Messages</a>
+								<a href="{{ path('admin_messages') }}">Messages</a>
 							</p>
 						</div>
 					{% elseif is_granted('ROLE_AUTHOR') %}
