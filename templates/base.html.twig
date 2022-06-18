@@ -97,7 +97,7 @@
 					{% if is_granted('ROLE_ADMIN') %}
 						<div>
 							<p>
-								<a href="index.php?controller=articlecontroller&action=showAdminDashboard">Tableau de bord</a>
+								<a href="{{ path('admin_dashboard') }}">Tableau de bord</a>
 							</p>
 							<p>
 								<a href="index.php?controller=userscontroller&action=showEditUsersAdmin">Users</a>

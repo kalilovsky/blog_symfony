@@ -79,6 +79,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
     public function getId(): ?int

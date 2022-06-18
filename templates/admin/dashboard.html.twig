@@ -1,0 +1,109 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="dashboard active" id="dashboard">
+			<div class="cards">
+				<div class="resume">
+					<a href="index.php?controller=userscontroller&action=showEditUsersAdmin"></a>
+					<div class="chiffre">
+						<div class="qt">{{users | length}}</div>
+						<div class="denom">Utilisateurs enregistrés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-users"></i>
+					</div>
+				</div>
+				<div class="resume">
+					<a href="index.php?controller=commentcontroller&action=showeditCommentsAdmin"></a>
+					<div class="chiffre">
+						<div class="qt">{{comments | length}}</div>
+						<div class="denom">Commentaires non approuvés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-comments"></i>
+					</div>
+				</div>
+				<div class="resume">
+					<a href="index.php?controller=articlecontroller&action=showEditArticlesAdmin"></a>
+					<div class="chiffre">
+						<div class="qt">{{articles | length}}</div>
+						<div class="denom">Articles postés</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-book-open"></i>
+					</div>
+				</div>
+				<div class="resume">
+					<a href="index.php?controller=messagecontroller&action=showEditMessagesAdmin"></a>
+					<div class="chiffre">
+						<div class="qt">{{messages | length}}</div>
+						<div class="denom">Messages non lus</div>
+					</div>
+					<div class="icon">
+						<i class="fas fa-envelope"></i>
+					</div>
+				</div>
+			</div>
+			<div class="detail">
+				<div class="recentActivity">
+					<div class="textUp">
+						<div class="texte">
+							Commentaires en Attente
+						</div>
+
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Article</th>
+								<th>Date</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+                            {% for comment in comments%}
+							<tr>
+								<td>{{comment.user.pseudo}}</td>
+								<td>{{comment.article.title}}</td>
+								<td>{{comment.datecreated | date('Y/m/d H:i')}}</td>
+								<td>{{comment.status}}</td>
+								<td></td>
+							</tr>
+                            {% endfor %}
+
+						</tbody>
+					</table>
+				</div>
+				<div class="recentUser">
+					<div class="resume">
+						<div class="chiffre">
+							<div class="qt">Message non lus</div>
+						</div>
+
+					</div>
+                    {% for message in messages %}
+						<div class="user">
+							<div class="userInfo">
+								<div class="pseudo">
+									{{message.senderemail}}
+								</div>
+								<div class="mail">
+                                    {{message.content | slice(0,20)  ~ '...'}}
+								</div>
+							</div>
+						</div>
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+		<div class="dashboard active" id="dashboard">
+			<p>Vous n'êtes pas autoriser à voir cette page.</p>
+		</div>
+	{% endif %}
+{% endblock %}
+

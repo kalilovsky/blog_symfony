@@ -138,7 +138,10 @@ class BlogController extends AbstractController
                 $manager->persist($article);
                 $manager->flush();
             }
+            return $this->render('blog/articlepage.html.twig', [
+                'article' => $article
+            ]);
         }
-        return $this->render('blog/home.html.twig', []);
+        return $this->redirectToRoute('add_article');
     }
 }

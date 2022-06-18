@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Image;
 
 class AddArticleType extends AbstractType
 {
@@ -22,19 +23,7 @@ class AddArticleType extends AbstractType
             ->add('content')
             ->add('smalldesc',TextType::class)
             ->add('category')
-            ->add('photoarticle',FileType::class,['constraints' => [
-            new File([
-                'maxSize' => '1240k',
-                'mimeTypes' => [
-                    'image/jpeg',
-                    'image/png',
-                    'image/gif',
-                    'image/bmp',
-                    'image/webp'
-                ],
-                'mimeTypesMessage' => 'Please upload a valid Image file',
-            ])
-        ]]);
+            ->add('photoarticle',FileType::class,["mapped" => false, 'constraints' => new Image(['maxSize'=>'5m', "mimeTypesMessage" => "Veuillez envoyer une image au format png, jpg, jpeg ou gif, de 10 mégas octets maximum"])]);
     }
 
     public function getAllCategories(ManagerRegistry $doctrine){

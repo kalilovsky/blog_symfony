@@ -2,19 +2,30 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\UsersRepository;
+use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
+use App\Repository\MessageRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin/dashboard", name="admin_dashboard")
      */
-    public function index(): Response
+    public function index(ArticleRepository $articleRepo, UsersRepository $usersRepo, CommentRepository $commentsRepo, MessageRepository $messageRepo): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+        $messages = $messageRepo->findBy(array('status'=>'0'));
+        $articles = $articleRepo->findAll();
+        $users = $usersRepo->findAll();
+        $comments = $commentsRepo->findBy(array('status'=>'0'));
+        return $this->render('admin/dashboard.html.twig', [
+            'articles' => $articles,
+            'users'=>$users,
+            'comments'=>$comments,
+            'messages'=>$messages
         ]);
     }
 }
