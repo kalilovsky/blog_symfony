@@ -38,7 +38,7 @@
 						</thead>
 						<tbody>
 							{% for article in articles %}
-								<tr class="editContent" data-id="{{article.id}}" id="{{article.id}}"></tr>
+								<tr class="editContent" data-id="{{article.id}}" id="{{article.id}}" data-url="{{ path('admin_get_article',{'id':article.id}) }}">
 								<td>{{article.id}}</td>
 								<td>{{article.title}}</td>
 								<td>{{article.category.catname}}</td>
@@ -101,7 +101,7 @@
 							</div>
 							<div class="rightEdit">
 								<div class="photo">
-									<img id="photo" src="./ressource/img/article/temp/brochettes.jpg" alt="" srcset="" data-src="brochettes.jpg">
+									<img id="photo" src="{{asset('./ressource/img/article/temp/brochettes.jpg')}}" alt="" srcset="" data-src="brochettes.jpg">
 								</div>
 								<div class="fileUpload">
 									<input class="form-control" type="file" id="formFile" name="file">
@@ -113,9 +113,9 @@
 							<textarea name="content" id="content" cols="30" rows="7"></textarea>
 						</div>
 						<div class="editButton">
-							<button name="updateButton" id="updateButton">Update</button>
+							<button name="updateButton" data-url="/admin/setArticle/" id="updateButton">Update</button>
 
-							<button name="deleteButton" id="deleteButton">Supprimer</button>
+							<button name="deleteButton" data-url="/admin/deleteArticle/" id="deleteButton">Supprimer</button>
 						</div>
 					</form>
 				</div>
@@ -127,11 +127,12 @@
 	<div class="dashboard active" id="dashboard">
 		<p>Vous n'êtes pas autoriser à voir cette page.</p>
 	</div>
-
 {% endif %}
 <script>
 	document.getElementById("logo").classList.add("hidden");
 </script>
-
+{% if is_granted('ROLE_ADMIN') %}
+	<script src="{{asset('./ressource/js/admin-articles.js')}}"></script>
+{% endif %}
 {% endblock %}
 

@@ -17,56 +17,57 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", name="idarticle")
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $creationdate;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $updatedate;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $smalldesc;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $photoarticle;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      * @ORM\JoinColumn(name="idcategory",referencedColumnName="idcategory", nullable=false)
-     * @Groups("comment")
+     * @Groups({"comment","article"})
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="articles")
      * @ORM\JoinColumn(name="idusers",referencedColumnName="idusers",nullable=false)
+     * @Groups({"article"})
      */
     private $user;
 

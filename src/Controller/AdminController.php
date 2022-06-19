@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Users;
 use App\Entity\Comment;
 use App\Form\RegistrationType;
 use App\Repository\UsersRepository;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use App\Repository\MessageRepository;
 use function PHPUnit\Framework\isNull;
@@ -173,5 +175,54 @@ class AdminController extends AbstractController
         $doctrine->remove($user);
         $doctrine->flush();
         return $this->json($id,200,[]);
+    }
+
+    /**
+     * @Route("admin/getArticle/{id}", name="admin_get_article")
+     */
+    public function adminGetArticle(Request $request, Article $article,EntityManagerInterface $doctrine,SluggerInterface $slugger): Response
+    {
+        return $this->json($article,200,[],["groups"=>"article"]);
+    }
+
+    /**
+     * @Route("admin/setArticle/{id}", name="admin_set_article")
+     */
+    public function adminSetArticle(Request $request, Article $article,EntityManagerInterface $doctrine,SluggerInterface $slugger, CategoryRepository $categoryRepo): Response
+    {
+        $editedUserParam = $request->request->all();
+        $article->setTitle($editedUserParam['title']);
+        $article->setSmalldesc($editedUserParam['smallDesc']);
+        $article->setContent($editedUserParam['content']);
+        $category = $categoryRepo->findOneBy(['id'=>$editedUserParam['idCategory']]);
+        $article->setCategory($category);
+        $file = $request->files->get('file');
+        if($file && (strpos($file->getClientMimeType(),'image') !==false)){
+            $originalFilename = $file->getClientOriginalName();
+                $safeFilename = $slugger->slug($originalFilename);
+                try{
+                    $file->move(
+                        $this->getParameter('article_photo_directory'),
+                        $safeFilename
+                    );
+                    $article->setPhotoarticle($safeFilename);
+                } catch (FileException $e){
+
+                }
+        }
+        $doctrine->persist($article);
+        $doctrine->flush();
+        return $this->json($article,200,[],["groups"=>"article"]);
+    }
+
+    /**
+     * @Route("admin/deleteArticle/{id}", name="admin_delete_article")
+     */
+    public function adminDeleteArticle(Article $article,EntityManagerInterface $doctrine): Response
+    {
+        $id = $article->getId();
+        $doctrine->remove($article);
+        $doctrine->flush();
+        return $this->json($id,200,[],["groups"=>"article"]);
     }
 }

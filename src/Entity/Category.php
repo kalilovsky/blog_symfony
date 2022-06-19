@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -17,11 +18,13 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", name="idcategory")
+     * @Groups({"article"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"article"})
      */
     private $catname;
 
