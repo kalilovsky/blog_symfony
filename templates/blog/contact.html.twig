@@ -3,20 +3,22 @@
 {% block body %}
 
 <main>
-<form action="#" method="GET" class="formContact">
+    {{ form_start(form, {'attr':{'class':'formContact'}}) }}
+    {% if messageToUser %}
+        <h2>{{messageToUser}}</h2>
+    {% endif %}
         <div class="email">
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" required>
+            {{form_widget(form.senderemail,{'label':false,'attr':{'placeholder':'Votre message'}}) }}   
         </div>
         <div class="message">
             <label for="message">Message</label>
-            <textarea type="text" name="message" placeholder="Votre message" rows="5" required></textarea>
+            {{form_widget(form.content,{'label':false, 'attr':{'rows':'5','placeholder':'Votre message'}}) }}   
         </div>
         <div class="button">
-            <input type="hidden" name="controller" value="messagecontroller">
             <button type="submit" name="action" value="sendMessage">Envoyer</button>
         </div>
-    </form>
+    {{ form_end(form)}}
 </main>
 
 

@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Message;
 use App\Entity\Users;
 use App\Form\AddArticleType;
+use App\Form\MessageType;
 use App\Repository\ArticleRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -82,9 +84,20 @@ class BlogController extends AbstractController
      * @Route ("/contact/", name="contact")
      * @return void
      */
-    public function contact()
+    public function contact(Request $request,EntityManagerInterface $manager) : Response
     {
-        return $this->render('blog/contact.html.twig');
+        $message = new Message();
+        $messageToUser = null;
+        $form = $this->createForm(MessageType::class,$message);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $message->setDate(new DateTime());
+            $message->setStatus(false);
+            $manager->persist($message);
+            $manager->flush();
+            $messageToUser = 'Votre message a bien été envoyé';
+        }
+        return $this->renderForm('blog/contact.html.twig',['form'=>$form,'messageToUser'=>$messageToUser]);
     }
 
     /**
