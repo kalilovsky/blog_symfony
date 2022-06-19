@@ -26,13 +26,13 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer", name = "idusers")
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $email;
 
@@ -43,31 +43,31 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $usertype;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("comment")
+     * @Groups({"comment","user"})
      */
     private $photouser;
 

@@ -39,7 +39,7 @@
 						</thead>
 						<tbody>
 							{% for user in users %}
-								<tr class="editContent" data-id="{{user.id}}" id="{{user.id}}">
+								<tr class="editContent" data-id="{{user.id}}" id="{{user.id}}" data-url={{ path('admin_get_user',{'id':user.id}) }}>
 									<td>{{user.id}}</td>
 									<td>
 										<img id="photo{{user.id}}" src="{{ asset('./ressource/img/account/' ~ user.photouser) }}" data-src="{{user.photouser}}" alt="">
@@ -69,7 +69,7 @@
 									<div class="sender">
 										<label for="">Pseudo :</label>
 										<input id="pseudo" name="pseudo" type="text" value="test" required>
-										<input id="idUsers" type="hidden" name="idusers">
+										<input id="idUsers" type="hidden" name="id">
 									</div>
 									<div class="email">
 										<label for="">Email :</label>
@@ -100,7 +100,7 @@
 								</div>
 								<div class="rightEdit">
 									<div class="photo">
-										<img id="photo" src="ressource/img/account/account_default.png" alt="" srcset="" data-src="account_default.png">
+										<img id="photo" src="{{asset('./ressource/img/account/account_default.png')}}" alt="" srcset="" data-src="account_default.png">
 									</div>
 									<div class="fileUpload">
 										<input class="form-control" type="file" id="file" name="file">
@@ -110,9 +110,9 @@
 							</div>
 
 							<div class="editButton">
-								<button name="updateButton" id="updateButton">Update</button>
+								<button name="updateButton" data-url="/admin/setUser/" id="updateButton">Update</button>
 
-								<button name="deleteButton" id="deleteButton">Supprimer</button>
+								<button name="deleteButton" data-url="/admin/deleteUser/" id="deleteButton">Supprimer</button>
 							</div>
 						</form>
 					</div>
@@ -129,5 +129,8 @@
 	<script>
 		document.getElementById("logo").classList.add("hidden");
 	</script>
+	{% if is_granted('ROLE_ADMIN') %}
+	<script src="{{asset('./ressource/js/admin-users.js')}}"></script>
+{% endif %}
 {% endblock %}
 
