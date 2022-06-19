@@ -44,7 +44,7 @@
 						</thead>
 						<tbody>
 							{% for message in messages %}
-								<tr class="editContent {{message.status == 0 ? 'unread'}}" data-id= data-status= ="{{message.id}}" ="{{message.status}}">
+								<tr class="editContent {{message.status == 0 ? 'unread'}}" data-id="{{message.id}}" data-status="{{message.status}}" data-url="{{path('admin_get_message',{'id':message.id})}}">
 									<td>{{message.id}}</td>
 									<td>{{message.senderemail}}</td>
 									<td>{{message.content}}</td>
@@ -91,6 +91,8 @@
 	<script>
 		document.getElementById("logo").classList.add("hidden");
 	</script>
-
+{% if is_granted('ROLE_ADMIN') %}
+	<script src="{{asset('./ressource/js/admin-messages.js')}}"></script>
+{% endif %}
 {% endblock %}
 

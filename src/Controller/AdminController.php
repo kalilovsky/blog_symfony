@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\Users;
 use App\Entity\Comment;
+use App\Entity\Message;
 use App\Form\RegistrationType;
 use App\Repository\UsersRepository;
 use App\Repository\ArticleRepository;
@@ -224,5 +225,18 @@ class AdminController extends AbstractController
         $doctrine->remove($article);
         $doctrine->flush();
         return $this->json($id,200,[],["groups"=>"article"]);
+    }
+
+    /**
+     * @Route("admin/getMessage/{id}", name="admin_get_message")
+     */
+    public function adminGetMessage(Message $message, EntityManagerInterface $doctrine): Response
+    {
+        if(!$message->isStatus()){
+            $message->setStatus(true);
+            $doctrine->persist($message);
+            $doctrine->flush();
+        }
+        return $this->json($message,200,[],['grousp'=>'message']);
     }
 }

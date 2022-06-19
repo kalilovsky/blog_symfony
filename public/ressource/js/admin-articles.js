@@ -1,6 +1,5 @@
 Array.from(document.getElementsByClassName("editContent")).forEach(e => {
     e.addEventListener("click", () => {
-        console.log(e);
         const url = e.dataset.url;
         let formData = new FormData();
         const dataToSend = {
