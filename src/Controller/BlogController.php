@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Message;
 use App\Entity\Users;
 use App\Form\AddArticleType;
+use App\Form\CommentType;
 use App\Form\MessageType;
 use App\Repository\ArticleRepository;
 use DateTime;
@@ -51,8 +53,39 @@ class BlogController extends AbstractController
      */
     public function articlePage(Article $article)
     {
-        return $this->render('blog/articlepage.html.twig', [
-            'article' => $article
+        $form = $this->createForm(CommentType::class);
+        return $this->renderForm('blog/articlepage.html.twig', [
+            'form'=>$form,
+            'article' => $article,
+            'messageComment'=> null,
+            
+        ]);
+    }
+
+    /**
+     * @Route("/article/add_comment/{id}", name="add_comment")
+     */
+    public function addComment(Article $article, EntityManagerInterface $manager, Request $request): Response
+    {
+        $user = $this->getUser();
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class,$comment);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $comment->setArticle($article);
+            $comment->setUser($user);
+            $comment->setDatecreated(new DateTime());
+            $comment->setStatus(false);
+            $manager->persist($comment);
+            $manager->flush();
+            unset($form);
+            $form = $this->createForm(CommentType::class);
+            $messageComment = 'Votre commentaire a bien été envoyé et en attente de validation.';
+        }
+        return $this->renderForm('blog/articlepage.html.twig', [
+            'article' => $article,
+            'messageComment'=> $messageComment,
+            'form'=>$form
         ]);
     }
     /**

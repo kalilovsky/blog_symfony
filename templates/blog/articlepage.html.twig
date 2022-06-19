@@ -1,5 +1,4 @@
 {% extends "base.html.twig" %}
-
 {% block body %}
 <main>
      <div class="theReceipt">
@@ -45,29 +44,29 @@
                 <p class="numberComment">0 Commentaires</p>
             </div>
         {% endif %}
-    {# </div>
-    <?php if (isset($_SESSION["mail"])) { ?>
-        <form action="#" method="GET" class="formComment" id="formComment">
+    {% if app.user %}
+        {{ form_start(form, {'action':  asset('/article/add_comment/' ~ article.id),'attr':{'class':'formComment'} }) }}
             <div>
-                <p id="message" style="color: green;"></p>
+                <p id="message" style="color: green;">
+                {% if messageComment %}
+                    {{messageComment}}
+                {% endif %}
+                </p>
             </div>
             <div class="pseudo">
                 <label for="pseudo">Pseudo</label>
-                <input id="pseudo" type="text" name="pseudo" placeholder="Pseudo" value="<?= $_SESSION["pseudo"] ?>">
+                {{ form_widget(form.sender,{'attr':{'value':app.user.pseudo}}) }}
             </div>
             <div class="comment">
                 <label for="comment">Commentaires</label>
-                <textarea id="comment" type="text" name="comment" placeholder="Commentaires" rows="5"></textarea>
+                {{ form_widget(form.contentcomment,{'attr':{'rows':5,'placeholder':'Votre commentaire...','type':'text'}}) }}
             </div>
-            <input type="hidden" name="idArticle" value="<?= $results[0]["idarticle"] ?>">
-            <input type="hidden" name="idUser" value="<?= $_SESSION["idUser"] ?>">
             <div class="button">
-                <input type="hidden" name="controller" value="commentcontroller">
-                <button type="action" name="postComment">Envoyer</button>
+                <button type="submit" name="postComment">Envoyer</button>
             </div>
-        </form>
-    <?php } ?>
-    <div class="recentReceipts">
+        {{ form_end(form) }}
+    {% endif %}
+    {# <div class="recentReceipts">
         <?php foreach ($articles as $elem) : ?>
             <div class="receipt1">
                 <div class="completeReceipt">
@@ -101,8 +100,8 @@
                 </div>
             </div>
         <?php endforeach ?>
-    </div> #}
     </div>
+    </div> #}
 </main>
 
 {% endblock %}
